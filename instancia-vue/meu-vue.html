@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Vue</title>
+</head>
+<body>
+    
+    <div id="app">
+        {{nome}} - {{sobrenome}} - {{5*9}}
+    </div>
+
+
+    <script>
+        function meuVue(params){
+            this.$el = document.querySelector(params.el)
+            this.$data = params.data
+
+            for(let atr in this.$data){
+                Object.defineProperty(this , atr, {
+                    get: () => { // Serve de proxy , ou seja , irá pegar e retornar outra propriedade.
+                        return this.$data[atr]
+                    },
+                    set: value => {
+                        this.$data[atr] = value
+                    }
+                })
+            }
+            //interpolar
+        const regex = /\{\{([\s\w+*-]*)\}\}/g
+            this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match,$1) => {
+                const value = this[$1.trim()]
+                return value ? value : eval($1)
+            })
+        }
+
+        const vm = new meuVue({
+            el:'#app',
+            data: {
+                nome: 'Jão',
+                sobrenome:'Sanguinette'
+            }
+        })
+
+        console.log(vm.nome)
+        console.log(vm.sobrenome)
+        vm.nome = 'Robismar'
+        console.log(vm.nome)
+
+    </script>
+
+</body>
+</html>

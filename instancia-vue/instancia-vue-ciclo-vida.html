@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <!-- <script src="https://unpkg.com/vue"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+       <h1>{{ titulo }}</h1>
+       <button @click="titulo += '#' ">Alterar Titulo</button>
+       <button @click="$destroy()" >Destroy</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: { 
+                titulo:'Ciclo de Vida'
+            },
+
+            beforeCreate() {
+                console.log('Antes de Criar')
+                
+            },
+            created(){
+                console.log('Criado')
+                // this.titulo = 'Xarabacai'
+            },
+            beforeMount() {
+                console.log('Antes de montar')
+            },
+            mounted() {
+                console.log('DOM montada')
+            },
+            beforeUpdate() {
+                console.log('Antes de atualizar')
+            },
+            updated() {
+                console.log('Atualizado')
+            },
+            beforeDestroy() {
+                console.log('Antes de Destruir')
+            },
+            destroyed() {
+                console.log('Destruido')
+            },
+        })
+    </script>
+
+</body>
+</html>

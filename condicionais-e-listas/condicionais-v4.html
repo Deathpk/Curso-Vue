@@ -1,0 +1,48 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+
+    <div id="app">
+        
+        <template v-if="logado">
+            <p>Usuário Logado: {{ nome }}</p>
+            <p>Perfil: Admin</p>
+        </template>
+        <p v-else-if="anonimo">Navegando Anonimamente</p>
+        <p v-else>Nenhum usuário logado</p>
+        <input type="checkbox" v-model="anonimo">
+        <button @click="logado = !logado">{{logado ? 'Sair' : 'Entrar' }}</button>
+        <hr>
+        <footer v-show="logado">
+            Desenvolvido pra vc
+        </footer>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                nome: 'Maria',
+                logado: false,
+                anonimo: true
+            }
+        })
+    </script>
+
+
+</body>
+</html>

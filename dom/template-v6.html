@@ -1,0 +1,45 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+
+    <div id="app">
+        <p v-once>{{ titulo }}</p>
+        <p>{{ saudacao() }}</p>
+        <a v-bind:href="link">Google</a>
+        <hr>
+        <p v-html="linkHtml"></p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: { // Onde ficam os atributos e propriedades.
+                titulo:'XARABACAAI',
+                link:'https://google.com',
+                linkHtml:'<a href="https://google.com">Google </a>'
+            },
+            methods:{ // Onde ficam funções e métodos.
+                saudacao: function() {
+                    this.titulo = 'Bom diia!'
+                    return this.titulo
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

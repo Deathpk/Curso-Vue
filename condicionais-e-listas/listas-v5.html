@@ -1,0 +1,57 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(cor,i) in cores">{{ cor }} - {{i}}</li>
+        </ul>
+        <hr>
+        <template v-for="(cor,i) in cores">
+            <h1>{{ cor }}</h1>
+            <h1>{{ i }}</h1>
+        </template>
+        <hr>
+        <ul>
+            <li v-for="pessoa in pessoas">
+                <div v-for="(valor,key, index) in pessoa">
+                    <h5>{{ key }} = {{ valor }} - {{ index }}</h5>
+                </div>
+            </li>    
+        </ul>
+        <hr>
+        <span v-for="n in 10">{{ n}}</span>
+
+    
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                cores:['vermelho','verde','amarelo','azul'],
+                pessoas:[
+                    {nome:'Ana', idade:26 , peso:59},
+                    {nome:'André', idade:38, peso:75}
+                ]
+            }
+        })
+    </script>
+
+
+</body>
+</html>
