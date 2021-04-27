@@ -29,12 +29,12 @@
 import { mapGetters } from 'vuex'
 export default {
     computed: {
-      ...mapGetters({ // sem o spreading não conseguiriamos utilizar o mapGetters no computed , pois existem outras propriedades computadas aqui dentro.
+      ...mapGetters('carrinho',{ // sem o spreading não conseguiriamos utilizar o mapGetters no computed , pois existem outras propriedades computadas aqui dentro.
         total:'valorTotal'
       }),
 
         produtos () {
-          return this.$store.state.produtos
+          return this.$store.state.carrinho.produtos
         }
     },
 
